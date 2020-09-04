@@ -1,0 +1,12 @@
+# Environment specifics
+venv
+
+# IDE specifics
+.idea
+
+# Test Databases
+.db
+.sqlite3
+
+# Others
+__pycache__
