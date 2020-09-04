@@ -5,8 +5,8 @@ venv
 .idea
 
 # Test Databases
-.db
-.sqlite3
+*.db
+*.sqlite3
 
 # Others
 __pycache__
