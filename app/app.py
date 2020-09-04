@@ -1,11 +1,12 @@
 from flask import Flask
-from flask_sqlalchemy import  SQLAlchemy
+from .models.models import db
 
-db = SQLAlchemy()
 
-def create_app():
-    app = Flask(__name__)
+def create_app(config):
+    app = Flask("Teacher-Student-Backend")
+    app.config.from_object(config)
     db.init_app(app)
+    db.app = app
 
     # home
     from .home.view import view as home_view

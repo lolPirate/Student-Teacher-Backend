@@ -1,4 +1,15 @@
 import os
 
-class Config :
-    pass
+
+class Config:
+    SECRET_KEY = os.environ.get("SECRET_KEY") or "thisismyveryveryverysecretkey"
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL") or r"sqlite:///db.sqlite3"
+    SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get("SQLALCHEMY_TRACK_MODIFICATIONS") or True
+
+
+class DevConfig(Config):
+    DEBUG = True
+
+
+class ProdConfig(Config):
+    DeBUG = False
