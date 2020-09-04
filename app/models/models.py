@@ -11,6 +11,7 @@ class Person(db.Model):
     last_name = db.Column(db.String(100))
     email_primary = db.Column(db.String(1000), unique=True, nullable=False)
     phone_primary = db.Column(db.String(1000), unique=True, nullable=False)
+    password = db.Column(db.String(1000), nullable=False)
     profile = db.relationship('Profile', backref='person', uselist=False)
 
 

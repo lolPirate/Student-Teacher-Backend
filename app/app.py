@@ -12,4 +12,8 @@ def create_app(config):
     from .home.view import view as home_view
     app.register_blueprint(home_view)
 
+    # users
+    from .users.views import view as user_view
+    app.register_blueprint(user_view)
+
     return app
