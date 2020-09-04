@@ -1,3 +1,4 @@
 from app.app import create_app
+from config import DevConfig
 
-app = create_app()
+app = create_app(DevConfig)
