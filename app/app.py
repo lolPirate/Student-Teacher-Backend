@@ -1,9 +1,11 @@
 from flask import Flask
 from .models.models import db
+from flask_cors import CORS
 
 
 def create_app(config):
     app = Flask("Teacher-Student-Backend")
+    cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
     app.config.from_object(config)
     db.init_app(app)
     db.app = app
