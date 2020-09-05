@@ -61,8 +61,11 @@ def create_user():
 @view.route('/api/user/login', methods=['POST'])
 @api_key_required
 def authenticate_user():
-    email_primary = request.form.get('email_primary', "")
-    password = request.form.get('password', "")
+    data = request.get_json()
+    # email_primary = request.form.get('email_primary', "")
+    email_primary = data['email_primary'] if data['email_primary'] else ""
+    # password = request.form.get('password', "")
+    password = data['password'] if data['password'] else ""
     user = Person.query.filter_by(email_primary=email_primary).first()
     stored_password = user.password
     if check_password_hash(stored_password, password):

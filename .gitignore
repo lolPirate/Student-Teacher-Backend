@@ -10,3 +10,4 @@ venv
 
 # Others
 __pycache__
+tests
