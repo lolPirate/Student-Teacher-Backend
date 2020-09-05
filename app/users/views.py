@@ -5,8 +5,11 @@ from app.models.models import db, Person
 import uuid
 import jwt
 import datetime
+from flask_cors import CORS
 
 view = Blueprint('users', __name__)
+
+CORS(view, supports_credentials=True)
 
 
 @view.route('/api/user', methods=['POST'])

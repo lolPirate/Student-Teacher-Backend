@@ -5,10 +5,10 @@ from flask_cors import CORS
 
 def create_app(config):
     app = Flask("Teacher-Student-Backend")
-    cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
     app.config.from_object(config)
     db.init_app(app)
     db.app = app
+    CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
     # home
     from .home.view import view as home_view
