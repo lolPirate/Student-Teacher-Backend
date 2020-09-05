@@ -1,6 +1,5 @@
 from functools import wraps
 from flask import request, jsonify, current_app
-import jwt
 
 
 def api_key_required(f):
@@ -12,11 +11,11 @@ def api_key_required(f):
         else:
             return jsonify({
                 "error": "Un-Authorized access"
-            })
+            }), 401
         if token != current_app.config['API_KEY']:
             return jsonify({
                 "error": "API KEY doesn't match"
-            })
+            }), 401
         return f(*args, **kwargs)
 
     return decorated_api_required
