@@ -9,7 +9,7 @@ from flask_cors import CORS
 
 view = Blueprint('users', __name__)
 
-CORS(view, supports_credentials=True)
+CORS(view, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
 
 @view.route('/api/user', methods=['POST'])
