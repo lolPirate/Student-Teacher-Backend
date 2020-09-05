@@ -28,7 +28,7 @@ def create_user():
     last_name = data['last_name'] if data['last_name'] else ""
     email_primary = data['email_primary'] if data['email_primary'] else ""
     phone_primary = data['phone_primary'] if data['phone_primary'] else ""
-    password = data['password'] if data["password"] else ""
+    password = generate_password_hash(data['password']) if data["password"] else ""
     public_id = str(uuid.uuid4())
 
     if Person.query.filter_by(email_primary=email_primary).first() is not None:
