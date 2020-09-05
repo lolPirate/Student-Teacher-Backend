@@ -12,13 +12,22 @@ view = Blueprint('users', __name__)
 @view.route('/api/user', methods=['POST'])
 @api_key_required
 def create_user():
-    first_name = request.form.get('first_name', "")
+    data = request.get_json()
+    """first_name = request.form.get('first_name', "") 
     middle_name = request.form.get('middle_name', "")
     last_name = request.form.get('last_name', "")
     email_primary = request.form.get('email_primary', "")
     phone_primary = request.form.get('phone_primary', "")
-    password = generate_password_hash(request.form.get('password', ""))
+    password = generate_password_hash(request.form.get('password', ""))"""
+
+    first_name = data['first_name'] if data['first_name'] else ""
+    middle_name = data['middle_name'] if data['middle_name'] else ""
+    last_name = data['last_name'] if data['last_name'] else ""
+    email_primary = data['email_primary'] if data['email_primary'] else ""
+    phone_primary = data['phone_primary'] if data['phone_primary'] else ""
+    password = data['password'] if data["password"] else ""
     public_id = str(uuid.uuid4())
+
     if Person.query.filter_by(email_primary=email_primary).first() is not None:
         return jsonify({
             "error": "Invalid primary email",
